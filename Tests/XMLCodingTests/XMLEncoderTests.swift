@@ -8,6 +8,7 @@ import SnapshotTesting
 
 final class XMLEncoderTests: XCTestCase {
 	var encoder: XMLEncoder!
+	var isRecordMode: Bool = false
 	
 	override func setUp() {
 		encoder = XMLEncoder()
@@ -15,19 +16,19 @@ final class XMLEncoderTests: XCTestCase {
 	
 	func testValueEncoding() {
 		TestData.ValueEncoding.values.forEach {
-			assertSnapshots(matching: try! encoder.encode($0), as: [.lines], record: false)
+			assertSnapshots(matching: try! encoder.encode($0), as: [.lines], record: isRecordMode)
 		}
 	}
 	
 	func testArrayEncoding() {
 		TestData.ArrayEncoding.values.forEach {
-			assertSnapshots(matching: try! encoder.encode($0), as: [.lines], record: false)
+			assertSnapshots(matching: try! encoder.encode($0), as: [.lines], record: isRecordMode)
 		}
 	}
 	
 	/* TODO: - Make up a working test
 	Apparently, dictionary does not save the order while encoding,
-	so this test has 50% chance to success.
+	so this test has _some_ chance to success.
 	 
 	 
 	func testDictionaryEncoding() {
@@ -37,12 +38,12 @@ final class XMLEncoderTests: XCTestCase {
 	}
 	 */
 	
-	func testComplexObjects() {
-			assertSnapshots(matching: try! encoder.encode(TestData.ComplexObjectsEncoding.value), as: [.lines], record: false)
+	func testComplexObjectsEncoding() {
+			assertSnapshots(matching: try! encoder.encode(TestData.ComplexObjectsEncoding.value), as: [.lines], record: isRecordMode)
 	}
 	
-	func testArrayOfComplexObjects() {
-		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfComplexObjects.values), as: [.lines], record: false)
+	func testArrayOfComplexObjectsEncoding() {
+		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfComplexObjectsEncoding.values), as: [.lines], record: isRecordMode)
 	}
 }
 
@@ -95,7 +96,7 @@ private extension XMLEncoderTests {
 			)
 		}
 		
-		enum ArrayOfComplexObjects {
+		enum ArrayOfComplexObjectsEncoding {
 			static let values = [ComplexObjectsEncoding.Object](
 				repeating: ComplexObjectsEncoding.value,
 				count: 3
