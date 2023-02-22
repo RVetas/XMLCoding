@@ -72,4 +72,4 @@ public final class XMLEncoder {
 
 `XMLEncodingConfiguration` allows you to customize the number of spaces in indents, the root element name ("root" is used by default) and whether encoder should include type attributes or not.
 
-Example outputs for different configurations can be found [here][./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.1.txt] and [here][./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.2.txt].
+Example outputs for different configurations can be found [here](./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.1.txt) and [here](./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.2.txt).
