@@ -1,0 +1,9 @@
+<root type="Dictionary" elementType="(key: String, value: Int)">
+        <Key1>
+                    1
+        </Key1>
+        <Key2>
+                    2
+        </Key2>
+
+</root>

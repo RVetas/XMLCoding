@@ -37,7 +37,6 @@ public final class XMLSingleValueEncodingContainer: SingleValueEncodingContainer
 			configuration: configuration
 		)
 		try value.encode(to: encoder)
-		encodingContext.data.append("\(indent)<value>\n\(encoder.encodingContext.data)\n\(indent)</value>")
+		encodingContext.data.append(encoder.encodingContext.data)
 	}
-	
 }

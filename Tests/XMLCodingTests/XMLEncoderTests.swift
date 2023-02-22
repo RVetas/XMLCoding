@@ -45,6 +45,15 @@ final class XMLEncoderTests: XCTestCase {
 	func testArrayOfComplexObjectsEncoding() {
 		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfComplexObjectsEncoding.values), as: [.lines], record: isRecordMode)
 	}
+	
+	func testCustomConfiguration() {
+		encoder = XMLEncoder(configuration: XMLEncodingConfiguration(countOfIndentationSpaces: 1, rootElementName: .custom("body")))
+		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfComplexObjectsEncoding.values), as: [.lines], record: isRecordMode)
+	}
+	
+	func testArrayOfArraysEncoding() {
+		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfArraysEncoding.value), as: [.lines], record: isRecordMode)
+	}
 }
 
 private extension XMLEncoderTests {
@@ -101,6 +110,13 @@ private extension XMLEncoderTests {
 				repeating: ComplexObjectsEncoding.value,
 				count: 3
 			)
+		}
+		
+		enum ArrayOfArraysEncoding {
+			static let value = [
+				[1, 2, 3, 4, 5],
+				[5, 4, 3, 2, 1]
+			]
 		}
 	}
 }

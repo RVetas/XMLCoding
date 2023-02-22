@@ -1,14 +1,14 @@
-<root>
-    <item>
+<root type="Array" elementType="Float">
+    <item type="Float">
                 1.25
     </item>
-    <item>
+    <item type="Float">
                 0.3
     </item>
-    <item>
+    <item type="Float">
                 0.0
     </item>
-    <item>
+    <item type="Float">
                 3.1415925
     </item>
 

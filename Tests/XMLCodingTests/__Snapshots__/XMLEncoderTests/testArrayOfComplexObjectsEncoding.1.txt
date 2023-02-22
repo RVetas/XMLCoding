@@ -1,25 +1,25 @@
-<root>
-    <item>
+<root type="Array" elementType="Object">
+    <item type="Object">
                 <value>Hi</value>
-                <array>
-                        <item>
+                <array type="Array" elementType="Int">
+                        <item type="Int">
                                     1
                         </item>
-                        <item>
+                        <item type="Int">
                                     2
                         </item>
-                        <item>
+                        <item type="Int">
                                     3
                         </item>
 
                 </array>
-                <nestedObject>
+                <nestedObject type="NestedObject">
                             <property>Hello World!</property>
-                            <arrayProperty>
-                                    <item>
+                            <arrayProperty type="Array" elementType="String">
+                                    <item type="String" elementType="Character">
                                                 ArrayValue1
                                     </item>
-                                    <item>
+                                    <item type="String" elementType="Character">
                                                 ArrayValue2
                                     </item>
 
@@ -28,27 +28,27 @@
                 </nestedObject>
 
     </item>
-    <item>
+    <item type="Object">
                 <value>Hi</value>
-                <array>
-                        <item>
+                <array type="Array" elementType="Int">
+                        <item type="Int">
                                     1
                         </item>
-                        <item>
+                        <item type="Int">
                                     2
                         </item>
-                        <item>
+                        <item type="Int">
                                     3
                         </item>
 
                 </array>
-                <nestedObject>
+                <nestedObject type="NestedObject">
                             <property>Hello World!</property>
-                            <arrayProperty>
-                                    <item>
+                            <arrayProperty type="Array" elementType="String">
+                                    <item type="String" elementType="Character">
                                                 ArrayValue1
                                     </item>
-                                    <item>
+                                    <item type="String" elementType="Character">
                                                 ArrayValue2
                                     </item>
 
@@ -57,27 +57,27 @@
                 </nestedObject>
 
     </item>
-    <item>
+    <item type="Object">
                 <value>Hi</value>
-                <array>
-                        <item>
+                <array type="Array" elementType="Int">
+                        <item type="Int">
                                     1
                         </item>
-                        <item>
+                        <item type="Int">
                                     2
                         </item>
-                        <item>
+                        <item type="Int">
                                     3
                         </item>
 
                 </array>
-                <nestedObject>
+                <nestedObject type="NestedObject">
                             <property>Hello World!</property>
-                            <arrayProperty>
-                                    <item>
+                            <arrayProperty type="Array" elementType="String">
+                                    <item type="String" elementType="Character">
                                                 ArrayValue1
                                     </item>
-                                    <item>
+                                    <item type="String" elementType="Character">
                                                 ArrayValue2
                                     </item>
 

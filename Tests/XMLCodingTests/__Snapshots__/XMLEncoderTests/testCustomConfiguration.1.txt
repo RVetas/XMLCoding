@@ -1,0 +1,90 @@
+<body>
+ <item type="Object">
+    <value>Hi</value>
+    <array type="Array" elementType="Int">
+      <item type="Int">
+         1
+      </item>
+      <item type="Int">
+         2
+      </item>
+      <item type="Int">
+         3
+      </item>
+
+    </array>
+    <nestedObject type="NestedObject">
+       <property>Hello World!</property>
+       <arrayProperty type="Array" elementType="String">
+         <item type="String" elementType="Character">
+            ArrayValue1
+         </item>
+         <item type="String" elementType="Character">
+            ArrayValue2
+         </item>
+
+       </arrayProperty>
+
+    </nestedObject>
+
+ </item>
+ <item type="Object">
+    <value>Hi</value>
+    <array type="Array" elementType="Int">
+      <item type="Int">
+         1
+      </item>
+      <item type="Int">
+         2
+      </item>
+      <item type="Int">
+         3
+      </item>
+
+    </array>
+    <nestedObject type="NestedObject">
+       <property>Hello World!</property>
+       <arrayProperty type="Array" elementType="String">
+         <item type="String" elementType="Character">
+            ArrayValue1
+         </item>
+         <item type="String" elementType="Character">
+            ArrayValue2
+         </item>
+
+       </arrayProperty>
+
+    </nestedObject>
+
+ </item>
+ <item type="Object">
+    <value>Hi</value>
+    <array type="Array" elementType="Int">
+      <item type="Int">
+         1
+      </item>
+      <item type="Int">
+         2
+      </item>
+      <item type="Int">
+         3
+      </item>
+
+    </array>
+    <nestedObject type="NestedObject">
+       <property>Hello World!</property>
+       <arrayProperty type="Array" elementType="String">
+         <item type="String" elementType="Character">
+            ArrayValue1
+         </item>
+         <item type="String" elementType="Character">
+            ArrayValue2
+         </item>
+
+       </arrayProperty>
+
+    </nestedObject>
+
+ </item>
+
+</body>

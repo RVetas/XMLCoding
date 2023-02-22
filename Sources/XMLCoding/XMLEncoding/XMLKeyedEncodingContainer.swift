@@ -7,6 +7,7 @@ public final class XMLKeyedEncodingContainer<Key: CodingKey>: KeyedEncodingConta
 	
 	private let indentationLevel: UInt
 	private let configuration: XMLEncodingConfiguration
+	private let attributesWorker: BuildsAttributesString
 	
 	private var indent: String {
 		configuration.indentation(level: indentationLevel)
@@ -16,12 +17,14 @@ public final class XMLKeyedEncodingContainer<Key: CodingKey>: KeyedEncodingConta
 		encodingContext: XMLEncodingContext,
 		codingPath: [CodingKey],
 		indentationLevel: UInt,
-		configuration: XMLEncodingConfiguration
+		configuration: XMLEncodingConfiguration,
+		attributesWorker: BuildsAttributesString = AttributesStringBuilder()
 	) {
 		self.encodingContext = encodingContext
 		self.codingPath = codingPath
 		self.indentationLevel = indentationLevel
 		self.configuration = configuration
+		self.attributesWorker = attributesWorker
 	}
 	
 	public func encodeNil(forKey key: Key) throws {}
@@ -35,7 +38,10 @@ public final class XMLKeyedEncodingContainer<Key: CodingKey>: KeyedEncodingConta
 		codingPath.append(key)
 		let nestedEncoder = XMLEncoder(indentationLevel: indentationLevel + 1, configuration: configuration, isRoot: false)
 		let stringValue = try nestedEncoder.encode(value)
-		encodingContext.data.append("\(indent)<\(key.stringValue)>\n\(stringValue)\(indent)</\(key.stringValue)>\n")
+		let attributes = attributesWorker.getAttributesString(for: value)
+		encodingContext.data.append(
+			"\(indent)<\(key.stringValue) \(attributes)>\n\(stringValue)\(indent)</\(key.stringValue)>\n"
+		)
 	}
 	
 	public func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type, forKey key: Key) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {

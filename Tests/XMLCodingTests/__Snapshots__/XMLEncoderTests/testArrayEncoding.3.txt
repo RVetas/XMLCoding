@@ -1,14 +1,14 @@
-<root>
-    <item>
+<root type="Array" elementType="Double">
+    <item type="Double">
                 1.25
     </item>
-    <item>
+    <item type="Double">
                 0.3
     </item>
-    <item>
+    <item type="Double">
                 0.0
     </item>
-    <item>
+    <item type="Double">
                 3.141592653589793
     </item>
 
