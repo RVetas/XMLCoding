@@ -1,4 +1,4 @@
-<root type="Object">
+<object type="Object">
         <value>Hi</value>
         <array type="Array" elementType="Int">
                 <item type="Int">
@@ -26,4 +26,4 @@
 
         </nestedObject>
 
-</root>
+</object>

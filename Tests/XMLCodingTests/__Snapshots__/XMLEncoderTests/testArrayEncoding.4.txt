@@ -1,4 +1,4 @@
-<root type="Array" elementType="String">
+<array type="Array" elementType="String">
     <item type="String" elementType="Character">
                 Hello
     </item>
@@ -9,4 +9,4 @@
                 !
     </item>
 
-</root>
+</array>

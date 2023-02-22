@@ -1,4 +1,4 @@
-<root type="Array" elementType="Float">
+<array type="Array" elementType="Float">
     <item type="Float">
                 1.25
     </item>
@@ -12,4 +12,4 @@
                 3.1415925
     </item>
 
-</root>
+</array>

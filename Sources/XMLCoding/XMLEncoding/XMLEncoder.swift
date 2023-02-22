@@ -67,7 +67,7 @@ public final class XMLEncoder {
 	///	```
 	/// Will result into:
 	/// ```xml
-	/// <root type="Person">
+	/// <person type="Person">
 	/// 	<age>25</age>
 	///  	<name>Vitaliy</name>
 	///  	<habits type="Array" elementType="Habit">
@@ -81,10 +81,11 @@ public final class XMLEncoder {
 	/// 					 sports
 	/// 		 </item>
 	///  	</habits>
-	/// </root>
+	/// </person>
 	/// ```
 	///
 	/// - Returns: String with XML output
+	/// - Throws: EncodingError
 	public func encode(_ value: Encodable) throws -> String {
 		let encoder = XMLEncoding(indentationLevel: indentationLevel + 1, configuration: configuration)
 		try value.encode(to: encoder)
@@ -93,7 +94,8 @@ public final class XMLEncoder {
 			let attributes = attributesWorker.getAttributesString(for: value)
 			switch configuration.rootElementName {
 				case .default:
-					return "<root \(attributes)>\n\(xmlString)\n</root>"
+					let rootName = attributesWorker.getTypeString(for: value)
+					return "<\(rootName) \(attributes)>\n\(xmlString)\n</\(rootName)>"
 				case .custom(let rootElementName):
 					if configuration.shouldIncludeAttributes {
 						return "<\(rootElementName) \(attributes)>\n\(xmlString)\n</\(rootElementName)>"

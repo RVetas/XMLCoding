@@ -1,4 +1,4 @@
-<root type="Array" elementType="Object">
+<array type="Array" elementType="Object">
     <item type="Object">
                 <value>Hi</value>
                 <array type="Array" elementType="Int">
@@ -87,4 +87,4 @@
 
     </item>
 
-</root>
+</array>

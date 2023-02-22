@@ -33,7 +33,7 @@ public struct XMLEncodingConfiguration {
 		return String(repeating: " ", count: Int(countOfIndentationSpaces * level))
 	}
 	
-	/// Default configuration, it has 4 spaces in indentation, `root` as root element name and it includes type attributes in an output
+	/// Default configuration, it has 4 spaces in indentation, type name as root element name and it includes type attributes in an output
 	public static var `default`: XMLEncodingConfiguration {
 		XMLEncodingConfiguration(
 			countOfIndentationSpaces: 4,

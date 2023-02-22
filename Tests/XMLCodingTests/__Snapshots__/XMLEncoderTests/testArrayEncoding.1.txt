@@ -1,4 +1,4 @@
-<root type="Array" elementType="Int">
+<array type="Array" elementType="Int">
     <item type="Int">
                 1
     </item>
@@ -15,4 +15,4 @@
                 5
     </item>
 
-</root>
+</array>
