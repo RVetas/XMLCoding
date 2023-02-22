@@ -1,8 +1,8 @@
 // Created by Рамазанов Виталий Глебович on 20/02/23
 
-public final class XMLSingleValueEncodingContainer: SingleValueEncodingContainer {
+final class XMLSingleValueEncodingContainer: SingleValueEncodingContainer {
 	
-	public var codingPath: [CodingKey] = []
+	var codingPath: [CodingKey] = []
 	
 	private let indentationLevel: UInt
 	private let configuration: XMLEncodingConfiguration
@@ -12,7 +12,7 @@ public final class XMLSingleValueEncodingContainer: SingleValueEncodingContainer
 		configuration.indentation(level: indentationLevel)
 	}
 	
-	public init(
+	init(
 		encodingContext: XMLEncodingContext,
 		codingPath: [CodingKey],
 		indentationLevel: UInt,
@@ -24,13 +24,13 @@ public final class XMLSingleValueEncodingContainer: SingleValueEncodingContainer
 		self.configuration = configuration
 	}
 	
-	public func encodeNil() throws { }
+	func encodeNil() throws { }
 
-	public func encode<T>(_ value: T) throws where T: Encodable & LosslessStringConvertible {
+	func encode<T>(_ value: T) throws where T: Encodable & LosslessStringConvertible {
 		encodingContext.data.append("\(indent)\(String(value))")
 	}
 	
-	public func encode<T>(_ value: T) throws where T : Encodable {
+	func encode<T>(_ value: T) throws where T : Encodable {
 		let encoder = XMLEncoding(
 			encodingContext: encodingContext,
 			indentationLevel: indentationLevel + 1,

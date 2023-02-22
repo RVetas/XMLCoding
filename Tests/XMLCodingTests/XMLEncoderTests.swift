@@ -4,7 +4,7 @@
 import XCTest
 import SnapshotTesting
 
-@testable import XMLCoding
+import XMLCoding
 
 final class XMLEncoderTests: XCTestCase {
 	var encoder: XMLEncoder!
@@ -47,7 +47,22 @@ final class XMLEncoderTests: XCTestCase {
 	}
 	
 	func testCustomConfiguration() {
-		encoder = XMLEncoder(configuration: XMLEncodingConfiguration(countOfIndentationSpaces: 1, rootElementName: .custom("body")))
+		encoder = XMLEncoder(
+			configuration: XMLEncodingConfiguration(
+				countOfIndentationSpaces: 2,
+				rootElementName: .custom("body"),
+				shouldIncludeAttributes: true
+			)
+		)
+		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfComplexObjectsEncoding.values), as: [.lines], record: isRecordMode)
+		
+		encoder = XMLEncoder(
+			configuration: XMLEncodingConfiguration(
+				countOfIndentationSpaces: 0,
+				rootElementName: .custom("body"),
+				shouldIncludeAttributes: false
+			)
+		)
 		assertSnapshots(matching: try! encoder.encode(TestData.ArrayOfComplexObjectsEncoding.values), as: [.lines], record: isRecordMode)
 	}
 	

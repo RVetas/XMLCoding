@@ -1,16 +1,16 @@
 // Created by Рамазанов Виталий Глебович on 20/02/23
 
-public final class XMLEncoding: Encoder {
+final class XMLEncoding: Encoder {
 	
-	public var codingPath: [CodingKey] = []
-	public var userInfo: [CodingUserInfoKey : Any] = [:]
+	var codingPath: [CodingKey] = []
+	var userInfo: [CodingUserInfoKey : Any] = [:]
 	
 	private let indentationLevel: UInt
 	private let configuration: XMLEncodingConfiguration
 	
 	let encodingContext: XMLEncodingContext
 	
-	public init(
+	init(
 		encodingContext: XMLEncodingContext = XMLEncodingContext(),
 		indentationLevel: UInt,
 		configuration: XMLEncodingConfiguration
@@ -20,7 +20,7 @@ public final class XMLEncoding: Encoder {
 		self.configuration = configuration
 	}
 	
-	public func container<Key>(keyedBy type: Key.Type) -> KeyedEncodingContainer<Key> where Key : CodingKey {
+	func container<Key>(keyedBy type: Key.Type) -> KeyedEncodingContainer<Key> where Key : CodingKey {
 		let xmlcontainer = XMLKeyedEncodingContainer<Key>(
 			encodingContext: encodingContext,
 			codingPath: codingPath,
@@ -31,7 +31,7 @@ public final class XMLEncoding: Encoder {
 		return container
 	}
 	
-	public func unkeyedContainer() -> UnkeyedEncodingContainer {
+	func unkeyedContainer() -> UnkeyedEncodingContainer {
 		XMLUnkeyedEncodingContainer(
 			encodingContext: encodingContext,
 			codingPath: codingPath,
@@ -40,7 +40,7 @@ public final class XMLEncoding: Encoder {
 		)
 	}
 	
-	public func singleValueContainer() -> SingleValueEncodingContainer {
+	func singleValueContainer() -> SingleValueEncodingContainer {
 		XMLSingleValueEncodingContainer(
 			encodingContext: encodingContext,
 			codingPath: codingPath,

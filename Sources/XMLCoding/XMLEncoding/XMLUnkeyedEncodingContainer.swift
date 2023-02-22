@@ -1,9 +1,9 @@
 // Created by Рамазанов Виталий Глебович on 20/02/23
 
-public final class XMLUnkeyedEncodingContainer: UnkeyedEncodingContainer {
+final class XMLUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 	
-	public var codingPath: [CodingKey]
-	public var count: Int = 0
+	var codingPath: [CodingKey]
+	var count: Int = 0
 	
 	private let indentationLevel: UInt
 	private let configuration: XMLEncodingConfiguration
@@ -15,7 +15,7 @@ public final class XMLUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 	
 	private let encodingContext: XMLEncodingContext
 	
-	public init(
+	init(
 		encodingContext: XMLEncodingContext,
 		codingPath: [CodingKey],
 		indentationLevel: UInt,
@@ -29,22 +29,28 @@ public final class XMLUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 		self.attributesWorker = attributesWorker
 	}
 	
-	public func encodeNil() throws {}
+	func encodeNil() throws {}
 	
-	public func encode<T>(_ value: T) throws where T: Encodable & LosslessStringConvertible {
+	func encode<T>(_ value: T) throws where T: Encodable & LosslessStringConvertible {
 		encodingContext.data.append("\(indentation)<item>\(String(value))</item>")
 		count += 1
 	}
 	
-	public func encode<T>(_ value: T) throws where T : Encodable {
+	func encode<T>(_ value: T) throws where T : Encodable {
 		let nestedEncoder = XMLEncoder(indentationLevel: indentationLevel + 1, configuration: configuration, isRoot: false)
 		let stringValue = try nestedEncoder.encode(value)
-		let attributes = attributesWorker.getAttributesString(for: value)
 		count += 1
-		encodingContext.data.append("\(indentation)<item \(attributes)>\n\(stringValue)\(indentation)</item>\n")
+		
+		if configuration.shouldIncludeAttributes {
+			let attributes = attributesWorker.getAttributesString(for: value)
+			encodingContext.data.append("\(indentation)<item \(attributes)>\n\(stringValue)\(indentation)</item>\n")
+		} else {
+			encodingContext.data.append("\(indentation)<item>\n\(stringValue)\(indentation)</item>\n")
+		}
+		
 	}
 	
-	public func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
+	func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
 		KeyedEncodingContainer(
 			XMLKeyedEncodingContainer<NestedKey>(
 				encodingContext: encodingContext,
@@ -55,7 +61,7 @@ public final class XMLUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 		)
 	}
 	
-	public func nestedUnkeyedContainer() -> UnkeyedEncodingContainer {
+	func nestedUnkeyedContainer() -> UnkeyedEncodingContainer {
 		XMLUnkeyedEncodingContainer(
 			encodingContext: encodingContext,
 			codingPath: codingPath,
@@ -64,7 +70,7 @@ public final class XMLUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 		)
 	}
 	
-	public func superEncoder() -> Encoder {
+	func superEncoder() -> Encoder {
 		XMLEncoding(
 			encodingContext: encodingContext,
 			indentationLevel: indentationLevel + 1,

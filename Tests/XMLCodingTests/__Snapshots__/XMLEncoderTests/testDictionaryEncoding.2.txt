@@ -1,9 +1,0 @@
-<root type="Dictionary" elementType="(key: Int, value: String)">
-        <1>
-                    Value1
-        </1>
-        <2>
-                    Value2
-        </2>
-
-</root>
