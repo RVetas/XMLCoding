@@ -70,6 +70,6 @@ public final class XMLEncoder {
 }
 ```
 
-`XMLEncodingConfiguration` allows you to customize the number of spaces in indents, the root element name ("root" is used by default) and whether encoder should include type attributes or not.
+The first property `configuration` of type `XMLEncodingConfiguration` allows you to customize the number of spaces in indents, the root element name ("root" is used by default) and whether encoder should include type attributes or not. Example outputs for different configurations can be found [here](./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.1.txt) and [here](./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.2.txt).
 
-Example outputs for different configurations can be found [here](./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.1.txt) and [here](./Tests/XMLCodingTests/__Snapshots__/XMLEncoderTests/testCustomConfiguration.2.txt).
+`BuildsAttributesString` is an interface that allows encoder to insert attributes for encoded values. `AttributesStringBuilder` is a default implementation of this protocol that, it adds `type` and `elementType` attributes as shown above. 
